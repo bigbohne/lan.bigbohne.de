@@ -1,58 +1,8 @@
-# Hono minimal project
+# lan.bigbohne.de
 
-This is a minimal project with [Hono](https://github.com/honojs/hono/) for Cloudflare Workers.
+Developed using the bun runtime.
 
-## Features
+Install dependencies: `bun i`
+Run dev server: `bun run dev`
+Deploy to Cloudflare: `bun run deploy`
 
-- Minimal
-- TypeScript
-- Wrangler to develop and deploy.
-- [Jest](https://jestjs.io/ja/) for testing.
-
-## Usage
-
-Initialize
-
-```
-npx create-cloudflare my-app https://github.com/honojs/hono-minimal
-```
-
-Install
-
-```
-yarn install
-```
-
-Develop
-
-```
-yarn dev
-```
-
-Test
-
-```
-yarn test
-```
-
-Deploy
-
-```
-yarn deploy
-```
-
-## Examples
-
-See: <https://github.com/honojs/examples>
-
-## For more information
-
-See: <https://honojs.dev>
-
-## Author
-
-Yusuke Wada <https://github.com/yusukebe>
-
-## License
-
-MIT
