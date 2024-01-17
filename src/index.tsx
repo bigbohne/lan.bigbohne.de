@@ -1,11 +1,14 @@
 import { Hono } from 'hono'
-import { Page } from './page';
-import { Layout } from './layout';
+import { cache } from 'hono/cache'
+import { serveStatic } from 'hono/cloudflare-workers'
+import IndexCtrl from './routes';
 
 const app = new Hono()
 
-app.get('/', (ctx) => {
-  return ctx.html(<Page title="lan.bigbohne.de"><Layout><h1>lan.bigbohne.de</h1></Layout></Page>)
-})
+app.get('/static/*', cache({
+    cacheName: 'static',
+    cacheControl: 'max-age=86400',
+}), serveStatic({ root: './' }))
+app.get('/', IndexCtrl);
 
 export default app;
