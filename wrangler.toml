@@ -3,13 +3,14 @@ main="src/index.ts"
 
 compatibility_date = "2023-12-18"
 
+kv_namespaces = [
+    { binding = "KV", id = "665bb3a3f4df49469fd4903a9bdbec31" }
+]
+
+
 [limits]
 cpu_ms = 50
 
 [site]
 bucket = "./assets"
 
-[[d1_databases]]
-binding = "DB" # available in your Worker on env.DB
-database_name = "lanbeibohne-db"
-database_id = "31046d59-ebab-417d-b963-6fc4df6a4d96"

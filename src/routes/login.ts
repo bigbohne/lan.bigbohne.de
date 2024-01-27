@@ -1,14 +1,15 @@
 import { Context } from "hono";
-import { getCookie, setCookie } from 'hono/cookie'
+import { login } from "../middleware/auth";
+import { getCookie, setCookie, deleteCookie } from 'hono/cookie'
 
 export default async function LoginCtrl(ctx: Context) {
-    let id = ctx.req.query("id");
-    console.log(`/login id=${id}`);
+    const email = ctx.req.query('email');
+    const uuid = ctx.req.query('uuid');
 
-    let { results } = await ctx.env.DB.prepare("SELECT * FROM users WHERE uuid = ?").bind(id).all()
-    console.log(results);
+    if (await login(ctx, email, uuid) == true) {
+        setCookie(ctx, 'farmfest-email', email);
+        setCookie(ctx, 'farmfest-uuid', uuid);
+    }
 
-    setCookie(ctx, "id", id);
-
-    return ctx.redirect("/");
+    return ctx.redirect('/internal');
 }
